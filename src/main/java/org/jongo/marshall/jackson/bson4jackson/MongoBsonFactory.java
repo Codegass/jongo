@@ -44,7 +44,7 @@ public class MongoBsonFactory extends BsonFactory {
         }
         return p;
     }
-
+    // FIXME: the `out` var should not be re-assigned.
     @Override
     public BsonGenerator createGenerator(OutputStream out, JsonEncoding enc) throws IOException {
 
