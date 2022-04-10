@@ -74,12 +74,12 @@ public abstract class JongoTestBase {
     protected Mapper getMapper() {
         return mapper;
     }
-    //TODO: Replace the Integer.valueOf(expectedVersion.replaceAll("\\.", "")); with Integer.parseInt((expectedVersion.replaceAll("\\.", ""))
+
     protected void assumeThatMongoVersionIsGreaterThan(String expectedVersion) throws UnknownHostException {
-        int expectedVersionAsInt = Integer.valueOf(expectedVersion.replaceAll("\\.", ""));
+        int expectedVersionAsInt = Integer.parseInt(expectedVersion.replaceAll("\\.", ""));
         CommandResult buildInfo = getDatabase().command("buildInfo");
         String version = (String) buildInfo.get("version");
-        int currentVersion = Integer.valueOf(version.replaceAll("\\.", ""));
+        int currentVersion = Integer.parseInt(version.replaceAll("\\.", ""));
         assumeTrue(currentVersion >= expectedVersionAsInt);
     }
 }
