@@ -76,7 +76,7 @@ public class CommandTest extends JongoTestBase {
         Number n = (Number) result.get("n");
         assertThat(n.intValue()).isEqualTo(1);
     }
-
+    // FIXME: remove the duplicated Double in the instanceof check
     @Test
     public void canRunAGeoNearCommand() throws Exception {
 
