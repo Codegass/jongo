@@ -18,6 +18,7 @@ package org.jongo;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+//TODO: unused import should be removed
 import com.mongodb.client.MongoDatabase;
 import org.jongo.bson.BsonDBDecoder;
 import org.jongo.bson.BsonDBEncoder;
