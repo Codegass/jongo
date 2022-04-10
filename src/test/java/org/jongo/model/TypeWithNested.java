@@ -69,7 +69,7 @@ public class TypeWithNested {
         this.id = id;
         return this;
     }
-
+    // FIXME: use the copy not the mutable object
     public List<NestedDocument> getNested() {
         return nested;
     }
