@@ -30,8 +30,9 @@ public class FindAndModify {
     private final Unmarshaller unmarshaller;
     private final QueryFactory queryFactory;
     private final Query query;
-    //FIXME: split the declatation into 3 lines
-    private Query fields, sort, modifier;
+    private Query fields;
+    private Query sort;
+    private Query modifier;
     private boolean remove = false;
     private boolean returnNew = false;
     private boolean upsert = false;
