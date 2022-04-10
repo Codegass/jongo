@@ -48,10 +48,9 @@ public class DocumentMarshallingTest extends JongoTestBase {
     public void tearDown() throws Exception {
         dropCollection("marshalling");
     }
-    // TODO: Assertion roulette test smell,Split the assert into two test case, one is checking the is check the
-    //  instance attribute value.
+
     @Test
-    public void canHandleJavaTypes() throws Exception {
+    public void canHandleJavaTypesPersisted() throws Exception {
 
         JavaNativeType type = new JavaNativeType();
         type.number = 100L;
@@ -65,12 +64,26 @@ public class DocumentMarshallingTest extends JongoTestBase {
         assertHasBeenPersistedAs("{'string' : 'value'}");
         assertHasBeenPersistedAs("{'bool' : false}");
         assertHasBeenPersistedAs("{'anEnum' : 'TEST'}");
+    }
+
+    @Test
+    public void canHandleJavaTypesOne() throws Exception {
+
+        JavaNativeType type = new JavaNativeType();
+        type.number = 100L;
+        type.string = "value";
+        type.bool = false;
+        type.anEnum = Parameter.TEST;
+
+        collection.save(type);
+
         JavaNativeType result = collection.findOne("{}").as(JavaNativeType.class);
         assertThat(result.bool).isFalse();
         assertThat(result.string).isEqualTo("value");
         assertThat(result.number).isEqualTo(100L);
         assertThat(result.anEnum).isEqualTo(Parameter.TEST);
     }
+
 
     @Test
     public void canHandleMinAndMaxKey() throws Exception {
