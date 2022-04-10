@@ -76,7 +76,7 @@ public class CommandTest extends JongoTestBase {
         Number n = (Number) result.get("n");
         assertThat(n.intValue()).isEqualTo(1);
     }
-    // FIXME: remove the duplicated Double in the instanceof check
+
     @Test
     public void canRunAGeoNearCommand() throws Exception {
 
@@ -93,7 +93,7 @@ public class CommandTest extends JongoTestBase {
         assertThat(locations.get(0).dis).has(new Condition<Double>() {
             @Override
             public boolean matches(Double value) {
-                return value instanceof Double && value > 1.7E-5 && value < 1.8E-5;
+                return value > 1.7E-5 && value < 1.8E-5;
             }
         });
         assertThat(locations.get(0).getName()).isEqualTo("Paris");
