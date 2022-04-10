@@ -44,17 +44,23 @@ public class MongoBsonFactory extends BsonFactory {
         }
         return p;
     }
-    // FIXME: the `out` var should not be re-assigned.
+
     @Override
     public BsonGenerator createGenerator(OutputStream out, JsonEncoding enc) throws IOException {
+
+        BsonGenerator g;
 
         IOContext ctxt = _createContext(out, true);
         ctxt.setEncoding(enc);
         if (enc == JsonEncoding.UTF8 && _outputDecorator != null) {
-            out = _outputDecorator.decorate(ctxt, out);
+            OutputStream out_g = _outputDecorator.decorate(ctxt, out);
+            g = new MongoBsonGenerator(_generatorFeatures, _bsonGeneratorFeatures, out_g);
         }
-        BsonGenerator g = new MongoBsonGenerator(_generatorFeatures, _bsonGeneratorFeatures, out);
+        else {
+            g = new MongoBsonGenerator(_generatorFeatures, _bsonGeneratorFeatures, out);
+        }
         ObjectCodec codec = getCodec();
+
         if (codec != null) {
             g.setCodec(codec);
         }
