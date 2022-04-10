@@ -113,7 +113,7 @@ public class FindPartialFieldTest extends JongoTestBase {
         List subElements = ((List) map.get("subElements"));
         assertThat(subElements).hasSize(1);
     }
-
+    // TODO: Add the assertion relate to the result, check the value of these getters is also important.
     @Test
     public void shouldIgnoreNullProjection() throws Exception {
         /* given */
