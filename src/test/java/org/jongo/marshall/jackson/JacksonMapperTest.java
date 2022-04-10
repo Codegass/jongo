@@ -172,7 +172,7 @@ public class JacksonMapperTest {
             return "Doe";
         }
     }
-    // FIXME: This method need to test all the name value, right now here is a unread field value.
+
     private static class PojoWithGetter {
         private String firstName;
         private String lastName;
@@ -184,6 +184,10 @@ public class JacksonMapperTest {
 
         public String getFirstName() {
             return firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
         }
     }
 }
