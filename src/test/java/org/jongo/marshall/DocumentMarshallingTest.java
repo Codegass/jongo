@@ -48,7 +48,8 @@ public class DocumentMarshallingTest extends JongoTestBase {
     public void tearDown() throws Exception {
         dropCollection("marshalling");
     }
-
+    // TODO: Assertion roulette test smell,Split the assert into two test case, one is checking the is check the
+    //  instance attribute value.
     @Test
     public void canHandleJavaTypes() throws Exception {
 
