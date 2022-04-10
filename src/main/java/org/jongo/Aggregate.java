@@ -84,7 +84,7 @@ public class Aggregate {
             this.resultHandler = resultHandler;
             this.results = results;
         }
-
+        // TODO: add override annotation
         public Iterator<E> iterator() {
             return this;
         }
